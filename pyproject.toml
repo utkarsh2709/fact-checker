@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "fact-checker"
+version = "0.1.0"
+description = "Multi-agent AI fact-checking system using LangGraph and Claude on Bedrock"
+authors = ["Utkarsh Gupta"]
+readme = "README.md"
+packages = [{include = "fact_checker", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.15"
+langgraph = ">=0.2"
+langchain-aws = ">=0.2"
+langchain = ">=0.3"
+tavily-python = ">=0.5"
+fastapi = ">=0.115"
+uvicorn = {extras = ["standard"], version = ">=0.30"}
+pydantic = ">=2.0"
+boto3 = ">=1.35"
+python-dotenv = ">=1.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.11"
+pytest = ">=8.3"
+pytest-asyncio = ">=0.24"
+httpx = ">=0.27"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "N"]
+ignore = ["C901", "W191"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
