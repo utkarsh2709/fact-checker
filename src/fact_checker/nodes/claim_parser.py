@@ -1,6 +1,6 @@
 import os
 
-from langchain_aws import ChatBedrockConverse
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from fact_checker.state import FactCheckState
@@ -16,9 +16,9 @@ Respond with ONLY the JSON object, no other text."""
 
 
 def claim_parser_node(state: FactCheckState) -> dict:
-    llm = ChatBedrockConverse(
-        model=os.environ["BEDROCK_MODEL_ID"],
-        region_name=os.environ.get("AWS_DEFAULT_REGION", "us-east-1"),
+    llm = ChatGoogleGenerativeAI(
+        model=os.environ.get("GEMINI_MODEL_ID", "gemini-2.0-flash"),
+        google_api_key=os.environ.get("GOOGLE_API_KEY"),
     )
     messages = [
         SystemMessage(content=_SYSTEM),

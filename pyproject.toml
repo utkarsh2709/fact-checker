@@ -13,14 +13,13 @@ packages = [{include = "fact_checker", from = "src"}]
 [tool.poetry.dependencies]
 python = ">=3.11,<3.15"
 langgraph = ">=0.2"
-langchain-aws = ">=0.2"
 langchain = ">=0.3"
 tavily-python = ">=0.5"
 fastapi = ">=0.115"
 uvicorn = {extras = ["standard"], version = ">=0.30"}
 pydantic = ">=2.0"
-boto3 = ">=1.35"
 python-dotenv = ">=1.0"
+langchain-google-genai = "^4.4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = ">=0.11"
